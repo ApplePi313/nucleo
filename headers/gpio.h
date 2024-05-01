@@ -3,6 +3,12 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
+#define GPIO(bank) = ((0x48000000) + (bank - 'A') * 0x400)
+
+struct gpio {
+    volatile uint32_t MODER, OTYPER, OSPEEDR, PUPDR, IDR, ODR, BSRR, LCKR, AFRL, AFRH, BRR;
+};
+
 enum GpioMode {
     Input = 0,
     GPOutput = 1,
